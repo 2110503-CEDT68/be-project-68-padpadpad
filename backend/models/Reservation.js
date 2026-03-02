@@ -21,9 +21,15 @@ const ReservationSchema = new mongoose.Schema({
     end_time: {
         type: String
     },
-    
+    status: {
+        type: String,
+        enum: ['pending', 'checked_in', 'no_show'],
+        default: 'pending'
+    }
 },{
     timestamps: true
 });
+
+
 
 module.exports = mongoose.model('Reservation', ReservationSchema);
