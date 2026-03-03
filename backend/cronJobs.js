@@ -57,5 +57,4 @@ async function runAutoUnbanJob() {
 //เช็ค 1 นาที
 cron.schedule('* * * * *', runAutoBanJob);
 cron.schedule('* * * * *', runAutoUnbanJob);
-
 module.exports = {runAutoBanJob, runAutoUnbanJob};
