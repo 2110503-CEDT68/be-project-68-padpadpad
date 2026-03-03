@@ -172,6 +172,7 @@ const {protect, authorize} = require('../middleware/auth');
 
 router.use('/:coopId/reservations', reservationRouter);
 
+<<<<<<< Updated upstream
 router.route('/')
     .get(getCoops)
     .post(protect, authorize('admin'), createCoop);
@@ -180,5 +181,10 @@ router.route('/:id')
     .get(getCoop)
     .put(protect, authorize('admin'), updateCoop)
     .delete(protect, authorize('admin'), deleteCoop);
+=======
+router.route('/').get(getCoops).post(protect,authorize('admin'), createCoop);
+router.route('/:id').get(getCoop).put(protect,authorize('admin'), updateCoop).delete(protect,authorize('admin'), deleteCoop);
+
+>>>>>>> Stashed changes
 
 module.exports = router;
