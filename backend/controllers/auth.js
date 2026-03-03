@@ -1,6 +1,6 @@
 const User = require('../models/User');
 
-exports.register=async (req,res,next) => {
+exports.register = async (req,res,next) => {
     try{
         const {name, email, password, role} = req.body;
         const user=await User.create({
@@ -18,7 +18,7 @@ exports.register=async (req,res,next) => {
     }
 }
 
-exports.login=async (req,res,next) => {
+exports.login = async (req,res,next) => {
     try{
         const {email,password}=req.body;
 

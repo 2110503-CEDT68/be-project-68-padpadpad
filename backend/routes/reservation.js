@@ -1,5 +1,5 @@
 const express = require('express');
-const {getReservations, getReservation, addReservation, updateReservation, deleteReservation} = require('../controllers/reservations');
+const {getReservations, getReservation, addReservation, updateReservation, deleteReservation, checkIn} = require('../controllers/reservations');
 
 const router = express.Router({mergeParams:true});
 
@@ -12,6 +12,6 @@ router.route('/:id')
     .get(getReservation)
     .put(protect, authorize('admin','user'),updateReservation)
     .delete(protect,authorize('admin','user'), deleteReservation);
-
+router.put('/:id/checkin',protect,checkIn);
 module.exports = router;
 

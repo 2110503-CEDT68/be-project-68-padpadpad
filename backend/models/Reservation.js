@@ -16,14 +16,36 @@ const ReservationSchema = new mongoose.Schema({
             required: true
         },
     start_time: {
-        type: String
+        type: Date,
+        required: true
     },
     end_time: {
-        type: String
+        type: Date,
+        required: true
     },
-    
+    status: {
+        type: String,
+        enum: ['pending', 'checked_in', 'no_show'],
+        default: 'pending'
+    }
 },{
     timestamps: true
 });
+
+ReservationSchema.statics.updateStatus = async function(reservation_id,status){
+    return this.findByIdAndUpdate(
+        reservation_id,
+        {status},
+        {new: true}
+    );
+};
+
+ReservationSchema.statics.getExpiredReservations = async function(){
+    const now = new Date();
+    return this.find({
+        status: 'pending',
+        start_time: {$lt: now}
+    });
+};
 
 module.exports = mongoose.model('Reservation', ReservationSchema);
