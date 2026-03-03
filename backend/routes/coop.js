@@ -206,7 +206,5 @@ router.route('/:id')
 router.route('/').get(getCoops).post(protect,authorize('admin'), createCoop);
 router.route('/:id').get(getCoop).put(protect,authorize('admin'), updateCoop).delete(protect,authorize('admin'), deleteCoop);
 
->>>>>>> Stashed changes
-
 module.exports = router;
->>>>>>> 66ab5e975cd37578cdf11d2a11a01a5e241e54ac
+
